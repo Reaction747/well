@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Cuenta regresiva</title>
+<style>
+body{
+    margin:0;
+    background: linear-gradient(to bottom, #000000, #1a1a1a);
+    color:white;
+    font-family: 'Segoe UI', sans-serif;
+    text-align:center;
+}
+
+.container{
+    margin-top:15%;
+}
+
+#countdown{
+    font-size:50px;
+    letter-spacing:2px;
+}
+
+button{
+    margin-top:30px;
+    padding:15px 30px;
+    font-size:18px;
+    border:none;
+    border-radius:30px;
+    background-color:#e91e63;
+    color:white;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background-color:#ff4081;
+    transform:scale(1.05);
+}
+
+#videoSection{
+    display:none;
+    margin-top:40px;
+}
+iframe{
+    width:80%;
+    height:450px;
+    border-radius:15px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<h1>Al llegar a cero, lleva todas las pistas en la mente y el corazón en la mano...</h1>
+<div id="countdown"></div>
+<div id="buttonSection"></div>
+</div>
+
+<div id="videoSection">
+<iframe src="AQUI_TU_LINK_DEL_VIDEO_EMBEBIDO" allow="autoplay"></iframe>
+</div>
+
+<script>
+var countDownDate = new Date("March 14, 2026 20:00:00").getTime();
+
+var x = setInterval(function(){
+
+var now = new Date().getTime();
+var distance = countDownDate - now;
+
+var days = Math.floor(distance / (1000*60*60*24));
+var hours = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
+var minutes = Math.floor((distance % (1000*60*60))/(1000*60));
+var seconds = Math.floor((distance % (1000*60))/1000);
+
+document.getElementById("countdown").innerHTML =
+days+"d "+hours+"h "+minutes+"m "+seconds+"s";
+
+if(distance < 0){
+clearInterval(x);
+document.getElementById("countdown").innerHTML="Llegó el momento 💖";
+
+document.getElementById("buttonSection").innerHTML =
+'<button onclick="showVideo()">¿Lista para el siguiente paso mi amor?</button>';
+}
+
+},1000);
+
+function showVideo(){
+document.getElementById("videoSection").style.display="block";
+document.querySelector(".container").style.display="none";
+}
+</script>
+
+</body>
+</html>
